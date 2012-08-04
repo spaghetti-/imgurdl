@@ -1,3 +1,6 @@
+Imgur Album Downloader
+======================
+
 Script to download all images in an imgur.com album
 to disk.
 
