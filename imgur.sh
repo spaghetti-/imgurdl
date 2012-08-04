@@ -14,7 +14,7 @@ usage(){
 	echo "USAGE: ./imgur.sh http://imgur.com/a/id"
 }
 
-url="${@: -1}"
+url=$1
 
 if [[ -z $url ]]
 then
@@ -40,6 +40,11 @@ then
 		echo "Directory exists, you may have downloaded this album before."
 		exit 1
 	else
+		if [[ -z $dir ]]
+		then
+			echo "Empty album most likely, using a random integer name"
+			dir=$((RANDOM))
+		fi
 		echo "Saving to $dir/"
 		mkdir -p $dir	
 	fi
@@ -56,5 +61,7 @@ then
 	done
 fi
 
+echo "Removing tmp"
+rm $ass
 echo "Done"
-exit 0
+#exit 0
